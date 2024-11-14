@@ -33,7 +33,7 @@ export const Box = ({ children }) => {
 export const MovieList = ({ movies, onSelectMovie }) => {
   return (
     <ul className="list list-movies">
-      {movies?.map((movie) => (
+      {(movies ?? []).map((movie) => (
         <Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
       ))}
     </ul>
@@ -65,7 +65,9 @@ export const MovieDetails = ({
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState("");
 
-  const iswatched = watched.map((movie) => movie.imdbID).includes(selectedID);
+  const iswatched = (watched ?? [])
+    .map((movie) => movie.imdbID)
+    .includes(selectedID);
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedID
   )?.userRating;
