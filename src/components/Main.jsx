@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 import { key, Loader } from "../App";
 import StarRating from "./StarRating";
 
-const average = (arr) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+const average = (arr) => {
+  if (!arr || arr.length === 0) {
+    return 0;
+  }
+  return arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+};
 
 export default function Main({ children }) {
   return (
