@@ -68,9 +68,9 @@ export const MovieDetails = ({
   const iswatched = (watched ?? [])
     .map((movie) => movie.imdbID)
     .includes(selectedID);
-  const watchedUserRating = (watched ?? []).find(
-    (movie) => movie.imdbID === selectedID
-  )?.userRating;
+  const watchedUserRating =
+    (watched ?? []).find((movie) => movie.imdbID === selectedID)?.userRating ??
+    null;
 
   const {
     Title: title,
